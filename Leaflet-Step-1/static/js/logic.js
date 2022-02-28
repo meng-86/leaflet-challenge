@@ -1,9 +1,8 @@
 // URL to earthquake json data (all earthquakes happened in the last 7 days)
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
 
-
 // GET request, and function to handle returned JSON data
-d3.json(queryUrl, function(data) {   
+d3.json(queryUrl, function(data) {
     createEarthquakes(data.features);
 });
 
@@ -58,7 +57,7 @@ function createMap(earthquakes) {
         zoomOffset: -1,
         id: "mapbox/streets-v11",
         accessToken: API_KEY
-      });
+    });
     
     var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
       attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
@@ -67,7 +66,7 @@ function createMap(earthquakes) {
       zoomOffset: -1,
       id: "mapbox/dark-v10",
       accessToken: API_KEY
-    });
+  });
     
     // to define the base map object to hold layer (satellite map as base layer)
     var baseMaps = {
@@ -102,8 +101,9 @@ function createMap(earthquakes) {
         else {return "DarkRed"}
     }  
 
-  // Create a GeoJSON layer containing the features array
-  // Each feature a popup describing the place and time of the earthquake
+
+// Create a GeoJSON layer containing the features array
+// Each feature a popup describing the place and time of the earthquake
   L.geoJSON(earthquakeData, {
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng, 
@@ -125,8 +125,6 @@ function createMap(earthquakes) {
   }).addTo(earthquakes);
   // Sending our earthquakes layer to the createMap function
   earthquakes.addTo(myMap);
-
-
 
     // to create legend in myMap 
 
