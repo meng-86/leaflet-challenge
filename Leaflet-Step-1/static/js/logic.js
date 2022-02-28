@@ -1,3 +1,4 @@
+
 // URL to earthquake json data (all earthquakes happened in the last 7 days)
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
 
@@ -101,9 +102,8 @@ function createMap(earthquakes) {
         else {return "DarkRed"}
     }  
 
-
-// Create a GeoJSON layer containing the features array
-// Each feature a popup describing the place and time of the earthquake
+  // Create a GeoJSON layer containing the features array
+  // Each feature a popup describing the place and time of the earthquake
   L.geoJSON(earthquakeData, {
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng, 
@@ -125,6 +125,9 @@ function createMap(earthquakes) {
   }).addTo(earthquakes);
   // Sending our earthquakes layer to the createMap function
   earthquakes.addTo(myMap);
+
+
+
 
     // to create legend in myMap 
 
